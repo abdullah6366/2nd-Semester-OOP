@@ -38,7 +38,7 @@ namespace Gym_Management_System.Plan
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n ------------------------------------------------ Searching plan by name ------------------------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Enter the name of the plan that you want to search : ");
+            Console.Write("Enter The name of the plan that you want to search : ");
             string name = Console.ReadLine().Trim().ToLower();
             Console.WriteLine("");
             PlanModel searchplan = planService.SearchPlanByName(name);

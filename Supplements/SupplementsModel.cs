@@ -9,6 +9,7 @@ namespace Gym_Management_System.Supplements
 {
     internal class SupplementsModel
     {
+
         public string SupplementName { get; set; }
         public double SupplementPrice { get; set; }
 
