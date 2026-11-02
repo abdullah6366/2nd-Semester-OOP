@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gym_Management_System.Member;
+using Gym_Management_System.Supplements;
 
 
 
@@ -38,6 +39,10 @@ namespace Gym_Management_System.Plan
         public List<PlanModel> LoadFromFile()
         {
             List<PlanModel> plansList = new List<PlanModel>();
+            if (!File.Exists(file))
+            {
+                return plansList;
+            }
             using ( StreamReader reader = new StreamReader(file))
             {
                 string line = "";

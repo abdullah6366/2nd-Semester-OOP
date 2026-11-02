@@ -18,9 +18,9 @@ namespace Gym_Management_System.Member
         // Adding a new member 
         public void SaveInFileFromUser(MemberModel membermodel)
         {
-            using ( StreamWriter save = new StreamWriter(file,true))
+            using ( StreamWriter writer = new StreamWriter(file,true))
             {
-                save.WriteLine(membermodel.ToString());
+                writer.WriteLine(membermodel.ToString());
             }
         }
 
@@ -42,6 +42,10 @@ namespace Gym_Management_System.Member
         public List<MemberModel> LoadFromFile(List<PlanModel> plansList )
         {
             List<MemberModel> listMemberModel = new List<MemberModel>();
+            if (!File.Exists(file))
+            {
+                return listMemberModel;
+            }
             using ( StreamReader reader = new StreamReader(file))
             {
                 string line = "";
@@ -72,10 +76,6 @@ namespace Gym_Management_System.Member
                 }
                 return listMemberModel;
             }
-        }
-        public void LoadFromFile2()
-        {
-
         }
     }
 }

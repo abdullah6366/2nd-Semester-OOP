@@ -42,6 +42,10 @@ namespace Gym_Management_System.Supplements
         public List<SupplementsModel> LoadFromFileinList()
         {
             List<SupplementsModel> supplements= new List<SupplementsModel>();
+            if (!File.Exists(file))
+            {
+                return supplements;
+            }
             using ( StreamReader reader = new StreamReader(file))
             {
                 string line = "";

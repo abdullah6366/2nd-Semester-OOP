@@ -16,8 +16,9 @@ namespace Gym_Management_System.Supplements
             suppService = new SupplementsService();
         }
 
-        public void DisplayFunctionCode(List<SupplementsModel> supplements)
+        public void DisplayAllSupplements()
         {
+            List<SupplementsModel> supplements = suppService.getAllSupplements();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(" ----------------------------------------------- All Supplements -----------------------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
@@ -29,11 +30,6 @@ namespace Gym_Management_System.Supplements
               
                 Console.WriteLine($"               {supplement.SupplementName}                                                  {supplement.SupplementPrice}");
             }
-        }
-        public void DisplayAllSupplements()
-        {
-            List<SupplementsModel> supplements = suppService.getAllSupplements();
-            DisplayFunctionCode( supplements );
         }
 
         public void AddSupplement()

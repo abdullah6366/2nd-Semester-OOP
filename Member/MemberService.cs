@@ -25,8 +25,7 @@ namespace Gym_Management_System.Member
         }
 
         public MemberModel SearchByName(string name)
-        {
-            PlanService planService = new PlanService();
+        {           
             List<PlanModel> list = planService.GetAllPlans();
             foreach (MemberModel m in memberRepo.LoadFromFile(list))
             {
