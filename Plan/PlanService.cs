@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,106 @@ namespace Gym_Management_System.Plan
             }
 
             return false;
+        }
+        public List<PlanModel> SearchFeature(int Id, double maxPrice, double minPrice, string name, string priceRange)
+        {
+            List<PlanModel> plan = planRepo.LoadFromFile();
+            List<PlanModel> newList = new List<PlanModel>();
+            if (Id != 0 && name.ToLower() != "no" && priceRange != "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.PlanId == Id && m.PlanName.Contains(name.ToLower()) && m.MonthlyFee <= maxPrice && m.MonthlyFee >= minPrice)
+                    {
+                        newList.Add(m);
+                        
+
+                    }
+                   
+                }
+                return newList;
+            }
+            else if (Id != 0 && name.ToLower() != "no" && priceRange == "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.PlanId == Id && m.PlanName.ToLower().Contains(name))
+                    {
+                        newList.Add(m);
+                        
+                    }
+                }
+                return newList;
+            }
+            else if (Id != 0 && name.ToLower() == "no" && priceRange == "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.PlanId == Id)
+                    {
+                        newList.Add(m);
+                       
+                    }
+
+                }
+                return newList;
+            }
+            else if (Id != 0 && name.ToLower() == "no" && priceRange != "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.PlanId == Id && m.MonthlyFee <= maxPrice && m.MonthlyFee >= minPrice) ;
+                    {
+                        newList.Add(m);
+                       
+                    }
+                }
+                return newList;
+            }
+            else if (Id == 0 && name != "no" && priceRange != "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.PlanName.ToLower().Contains(name) && m.MonthlyFee <= maxPrice && m.MonthlyFee >= minPrice)
+                    {
+                        newList.Add(m);
+                        
+                    }
+
+                }
+                return newList;
+            }
+
+            else if (Id == 0 && priceRange == "no" && name != "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.PlanName.ToLower().Contains(name))
+                    {
+                        newList.Add(m);
+                        
+                    }
+                }
+                return newList;
+            }
+            else if (Id == 0 && name.ToLower() == "no" && priceRange != "no")
+            {
+                foreach (PlanModel m in plan)
+                {
+                    if (m.MonthlyFee <= maxPrice && m.MonthlyFee >= minPrice)
+                    {
+                        newList.Add(m);
+                        
+                    }
+                }
+                return newList;
+            }
+            else if (Id == 0 && name.ToLower() == "no" && priceRange == "no")
+            {
+                newList = plan;
+                return newList;
+            }
+            return newList;
         }
     }
 }

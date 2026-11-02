@@ -72,7 +72,7 @@ namespace Gym_Management_System
             Console.WriteLine("----------- Plans -------------");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("6. Show Plans");
-            Console.WriteLine("7. Search Plan");
+            Console.WriteLine("7. Search feature");
             Console.WriteLine("8. Update Fee Plan");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("---------- Supplements -------------");
@@ -181,7 +181,7 @@ namespace Gym_Management_System
             else if (choice == "7")
             {
                 // Search Plan
-                planUI.SearchPlan();
+                planUI.SearchFilter();
             }
             else if (choice == "8")
             {

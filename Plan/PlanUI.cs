@@ -83,5 +83,44 @@ namespace Gym_Management_System.Plan
                 }
             }
         }
+        public void SearchFilter()
+        {
+            Console.WriteLine("--------------------- Search Filter ----------------------------");
+            Console.WriteLine("Do You want to apply search by Plan Id ? ");
+            Console.WriteLine("If Yes Then give the PLAN ID TO Search ( 1 or 2 ) if NO then type ( 0 ) ");
+            int planId = int.Parse( Console.ReadLine() );
+            Console.WriteLine("Do you want to search by something that occurs in plan Name ?");
+            Console.WriteLine("If YES then give the name , if NO then type no");
+            string option = Console.ReadLine().ToLower();
+            Console.WriteLine("Do you want to search by price range ? ( Yes OR NO ) ");
+            string priceRangeCheck = Console.ReadLine().ToLower();
+            
+            if ( priceRangeCheck != "no")
+            {
+                Console.WriteLine("Enter the max price :");
+                double maxPrice = double.Parse( Console.ReadLine());
+                Console.WriteLine("Enter the min price : ");
+                double minPrice = double.Parse( Console.ReadLine());
+                List<PlanModel> searchplan = planService.SearchFeature(planId,maxPrice, minPrice, option, priceRangeCheck);
+                foreach(PlanModel plan in searchplan)
+                {
+                    Console.WriteLine($"Plan Id = {plan.PlanId}   Plan Name = {plan.PlanName}   Fee = {plan.MonthlyFee}"  );
+                }
+            }
+            else if ( priceRangeCheck != "no")
+            {
+                List<PlanModel> searchplan = planService.SearchFeature(planId,100,100,option, priceRangeCheck);
+                foreach (PlanModel plan in searchplan)
+                {
+                    Console.WriteLine($"Plan Id = {plan.PlanId}   Plan Name = {plan.PlanName}   Fee = {plan.MonthlyFee}");
+                }
+                ;
+
+            }
+           
+            
+           
+
+        }
     }
 }
